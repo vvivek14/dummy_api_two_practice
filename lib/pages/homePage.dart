@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<AllUsers> userDetails = [];
+  List<dynamic> userDetails = [];
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => UserPosts(
-                          id: userDetails[index].id.toString(),
+                          id: userDetails[index]['id'].toString(),
                         ),
                       ),
                     );
@@ -67,14 +67,15 @@ class _HomePageState extends State<HomePage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("ID :- ${userDetails[index].id.toString()}"),
+                              Text(
+                                  "ID :- ${userDetails[index]['id'].toString()}"),
                               const SizedBox(height: 8),
                               Text(
-                                  "NAME :- ${userDetails[index].name.toString()}",
+                                  "NAME :- ${userDetails[index]['name'].toString()}",
                                   overflow: TextOverflow.ellipsis),
                               const SizedBox(height: 8),
                               Text(
-                                  "EMAIL :- ${userDetails[index].email.toString()}",
+                                  "EMAIL :- ${userDetails[index]['email'].toString()}",
                                   overflow: TextOverflow.ellipsis),
                             ],
                           ),

@@ -40,6 +40,13 @@ class _AllPostDetailsState extends State<AllPostDetails> {
     try {
       Response response = await _dio.post(
         "https://jsonplaceholder.typicode.com/posts",
+        // options: Options(
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     "Authorization":
+        //         "Bearer e7cc0b3db5631220b823f122352619b1caeb4a86e8819efee89f50f3d00a5eb4",
+        //   },
+        // ),
         data: {
           "userId": idUser,
           // "id": "11",
@@ -229,7 +236,7 @@ class _AllPostDetailsState extends State<AllPostDetails> {
                     right: 15,
                     child: FloatingActionButton(
                       onPressed: () {
-                        _postUserPost(widget.id);
+                        // _postUserPatch(widget.id);
                       },
                       child: Icon(Icons.add_box),
                       backgroundColor: Colors.teal,

@@ -4,7 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ProfilePage extends StatelessWidget {
-  final AllUsers objectData;
+  final dynamic objectData;
   const ProfilePage({Key? key, required this.objectData}) : super(key: key);
 
   @override
@@ -32,9 +32,9 @@ class ProfilePage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("ID:- ${objectData.id.toString()}"),
+                        Text("ID:- ${objectData['id'].toString()}"),
                         SizedBox(height: 5),
-                        Text("NAME:- ${objectData.name.toString()}"),
+                        Text("NAME:- ${objectData['name'].toString()}"),
                       ],
                     ),
                   ),
@@ -82,7 +82,7 @@ class ProfilePage extends StatelessWidget {
                             Expanded(
                               flex: 4,
                               child: Text(
-                                objectData.id.toString(),
+                                objectData['id'].toString(),
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -116,7 +116,7 @@ class ProfilePage extends StatelessWidget {
                             Expanded(
                               flex: 4,
                               child: Text(
-                                objectData.name.toString(),
+                                objectData['name'].toString(),
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -151,7 +151,7 @@ class ProfilePage extends StatelessWidget {
                             Expanded(
                               flex: 4,
                               child: Text(
-                                objectData.username.toString(),
+                                objectData['username'].toString(),
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -185,7 +185,7 @@ class ProfilePage extends StatelessWidget {
                             Expanded(
                               flex: 4,
                               child: Text(
-                                objectData.phone.toString(),
+                                objectData['phone'].toString(),
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -223,19 +223,19 @@ class ProfilePage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "CITY :- ${objectData.address!.city.toString()}",
+                                    "CITY :- ${objectData['address']['city'].toString()}",
                                     textAlign: TextAlign.left,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   SizedBox(height: 5),
                                   Text(
-                                    "STREET :- ${objectData.address!.street.toString()}",
+                                    "STREET :- ${objectData['address']['street'].toString()}",
                                     textAlign: TextAlign.left,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   SizedBox(height: 5),
                                   Text(
-                                    "SUITE :- ${objectData.address!.suite.toString()}",
+                                    "SUITE :- ${objectData['address']['suite'].toString()}",
                                     textAlign: TextAlign.left,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -275,19 +275,19 @@ class ProfilePage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "NAME :- ${objectData.company!.name.toString()}",
+                                    "NAME :- ${objectData['company']['name'].toString()}",
                                     textAlign: TextAlign.left,
                                     overflow: TextOverflow.clip,
                                   ),
                                   SizedBox(height: 8),
                                   Text(
-                                    "CATCH PHRASE :- ${objectData.company!.catchPhrase.toString()}",
+                                    "CATCH PHRASE :- ${objectData['company']['catchPhrase'].toString()}",
                                     textAlign: TextAlign.left,
                                     overflow: TextOverflow.clip,
                                   ),
                                   SizedBox(height: 8),
                                   Text(
-                                    "BS :- ${objectData.company!.bs.toString()}",
+                                    "BS :- ${objectData['company']['bs'].toString()}",
                                     textAlign: TextAlign.left,
                                     overflow: TextOverflow.ellipsis,
                                   ),
@@ -323,7 +323,7 @@ class ProfilePage extends StatelessWidget {
                             Expanded(
                               flex: 4,
                               child: Text(
-                                objectData.website.toString(),
+                                objectData['website'].toString(),
                                 textAlign: TextAlign.left,
                                 overflow: TextOverflow.ellipsis,
                               ),

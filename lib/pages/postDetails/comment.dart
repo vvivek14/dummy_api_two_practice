@@ -36,6 +36,9 @@ class _CommentsPageState extends State<CommentsPage> {
     });
   }
 
+//
+//__________________________________delect using (post delet):-
+//
   final Dio _dio = Dio();
 
   Future<String?> _postUserDelet(String idUser) async {
@@ -43,7 +46,6 @@ class _CommentsPageState extends State<CommentsPage> {
       Response response = await _dio.delete(
         "https://jsonplaceholder.typicode.com/comments/$idUser",
         // data: {
-        //   "userId": idUser,
         //   // "id": "11",
         //   "title": "hhjdcbdjbjbkdgvcdjh",
         //   "body": "hgdjegkjedjkeudgjkevuigeugkufiye",
@@ -54,6 +56,51 @@ class _CommentsPageState extends State<CommentsPage> {
         print("message sent");
         print(response.data);
         setState(() {});
+      } else {
+        print("error occured");
+      }
+    } catch (error) {
+      print(error);
+    }
+    return "";
+  }
+//___________________________________put Using (full object changening):-
+//
+//
+  // Future<String?> _postUserPut(String idUser) async {
+  //   try {
+  //     Response response = await _dio.put(
+  //       "https://jsonplaceholder.typicode.com/posts/$idUser",
+  //       data: {
+  //         "userId": widget.postUser.userId.toString(),
+  //         "id": idUser,
+  //         "title": "bchjbdhbkjdb",
+  //         "body": "bhjdcudusjklisoucijicjsiojcwiho",
+  //       },
+  //     );
+  //     if (response.statusCode == 200) {
+  //       print("message sent");
+  //       print(response.data);
+  //     } else {
+  //       print("error occured");
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  //   return "";
+  // }
+
+//_______________________________patch using(objct titile/body =changing using patch):-
+//
+
+  Future<String?> _postUserPatch(String idUser) async {
+    try {
+      Response response = await _dio.patch(
+          "https://jsonplaceholder.typicode.com/posts/$idUser",
+          data: {"title": "vcdjhdhvhdvhj", "body": "nvdvjvcd"});
+      if (response.statusCode == 200) {
+        print("message sent");
+        print(response.data);
       } else {
         print("error occured");
       }
@@ -84,149 +131,158 @@ class _CommentsPageState extends State<CommentsPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Card(
-                          // margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                          color: Colors.white,
-                          elevation: 5,
-                          shadowColor: Colors.teal.shade200,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 14.0, vertical: 10),
-                            child: Column(
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        "ID",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                        InkWell(
+                          onTap: () {
+                            _postUserPatch(widget.postUser.id.toString());
+                          },
+                          child: Card(
+                            // margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                            color: Colors.white,
+                            elevation: 5,
+                            shadowColor: Colors.teal.shade200,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 14.0, vertical: 10),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          "ID",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    const Expanded(
-                                      flex: 1,
-                                      child: Text(
-                                        ":-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Text(
+                                          ":-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      flex: 6,
-                                      child: Text(
-                                        widget.postUser.id.toString(),
-                                        style: TextStyle(fontSize: 16),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Text(
+                                          widget.postUser.id.toString(),
+                                          style: TextStyle(fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: Colors.teal.shade100,
-                                  thickness: 1,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        "USER ID",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: Colors.teal.shade100,
+                                    thickness: 1,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          "USER ID",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    const Expanded(
-                                      flex: 1,
-                                      child: Text(
-                                        ":-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Text(
+                                          ":-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      flex: 6,
-                                      child: Text(
-                                        widget.postUser.userId.toString(),
-                                        style: TextStyle(fontSize: 16),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Text(
+                                          widget.postUser.userId.toString(),
+                                          style: TextStyle(fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: Colors.teal.shade100,
-                                  thickness: 1,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        "TITLE",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: Colors.teal.shade100,
+                                    thickness: 1,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          "TITLE",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    const Expanded(
-                                      flex: 1,
-                                      child: Text(
-                                        ":-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Text(
+                                          ":-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      flex: 6,
-                                      child: Text(
-                                        widget.postUser.title.toString(),
-                                        style: const TextStyle(fontSize: 16),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Text(
+                                          widget.postUser.title.toString(),
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  color: Colors.teal.shade100,
-                                  thickness: 1,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Expanded(
-                                      flex: 2,
-                                      child: Text(
-                                        "BODY",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: Colors.teal.shade100,
+                                    thickness: 1,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          "BODY",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    const Expanded(
-                                      flex: 1,
-                                      child: Text(
-                                        ":-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16),
+                                      const Expanded(
+                                        flex: 1,
+                                        child: Text(
+                                          ":-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      flex: 6,
-                                      child: Text(
-                                        widget.postUser.body.toString(),
-                                        style: const TextStyle(fontSize: 16),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Text(
+                                          widget.postUser.body.toString(),
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

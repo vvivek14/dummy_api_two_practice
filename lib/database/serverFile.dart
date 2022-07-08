@@ -11,13 +11,28 @@ class Apicalling {
 
   Dio _dio = Dio();
 
-  Future<List<AllUsers>?> allUserData() async {
+  // Future<List<AllUsers>?> allUserData() async {
+  //   try {
+  //     Response response = await _dio.get(_user);
+  //     List<AllUsers> userList = [];
+
+  //     for (var data in response.data) {
+  //       userList.add(AllUsers.fromJson(data));
+  //     }
+  //     return userList;
+  //   } on DioError catch (e) {
+  //     print(e);
+  //   }
+  //   return null;
+  // }
+
+  Future<List<dynamic>?> allUserData() async {
     try {
       Response response = await _dio.get(_user);
-      List<AllUsers> userList = [];
+      List<dynamic> userList = [];
 
       for (var data in response.data) {
-        userList.add(AllUsers.fromJson(data));
+        userList.add(data);
       }
       return userList;
     } on DioError catch (e) {
